@@ -1,5 +1,6 @@
 <template>
     <header>
+        
         <div class="lineTop">
             <div class="center flexBlock">
                 <div class="flexBlock">        
@@ -16,7 +17,7 @@
                         <a href="#">Pogoda długoterminowa</a>
                     </li>
                     <li>
-                        <a href="#">Jakość powietrza</a>
+                        <router-link to="/smog">Jakość powietrza</router-link>
                     </li>
                     <li>
                         <a href="#">Alarmy pogodowe</a>
@@ -24,6 +25,7 @@
                 </ul>
             </div>
         </div>
+        
     </header>
 </template>
 
