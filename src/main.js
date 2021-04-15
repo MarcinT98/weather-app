@@ -4,7 +4,7 @@ import Smog from './components/Smog'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 Vue.config.productionTip = false
-const routers =[
+const routes =[
   {
     path:'/smog',
     component: Smog
@@ -12,7 +12,7 @@ const routers =[
   }
 ]
 const router =new VueRouter({
-  routers,
+  routes,
   mode:'history'
 })
 
@@ -20,3 +20,4 @@ new Vue({
   router,
   render: h => h(App),
 }).$mount('#app')
+export{router}

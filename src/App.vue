@@ -1,19 +1,17 @@
 <template>
   <div id="app">
     <Navbar/>
-<Smog/>
-<router-view></router-view>
+    <router-view></router-view>
+
 
   </div>
 </template>
 
 <script>
 import Navbar from './components/Navbar.vue'
-import Smog from './components/Smog.vue'
 export default {
   name: 'App',
   components: {
-    Smog,
     Navbar,
 
     

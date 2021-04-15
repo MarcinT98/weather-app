@@ -25,7 +25,7 @@
     </div>
 </template>
 <script>
-import axios from 'axios';
+//import axios from 'axios';
 export default{
       data() {
     return {
@@ -38,7 +38,7 @@ export default{
       getData()
       {
           
-axios.get('https://my.api.mockaroo.com/smog1.json?key=0892f560').then(response=>(this.info=response.data))
+//axios.get('https://my.api.mockaroo.com/smog1.json?key=0892f560').then(response=>(this.info=response.data))
 
       }
 
