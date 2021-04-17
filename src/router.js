@@ -13,6 +13,10 @@ const routes = [
     {
         path: '/mapa',
         component: Map
+    },
+    {
+        path: '*',
+        redirect: '/mapa'
     }
 ]
 

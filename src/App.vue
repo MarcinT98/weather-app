@@ -12,10 +12,7 @@ export default {
   name: "App",
   components: {
     Navbar,
-  },
-  mounted() {
-    this.$router.push({ path: "/mapa" });
-  },
+  }
 };
 </script>
 
