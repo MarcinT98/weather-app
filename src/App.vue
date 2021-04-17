@@ -1,22 +1,22 @@
 <template>
   <div id="app">
-    <Navbar/>
+    <Navbar />
     <router-view></router-view>
-
-
   </div>
 </template>
 
 <script>
-import Navbar from './components/Navbar.vue'
+import Navbar from "./components/Navbar.vue";
+
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Navbar,
-
-    
-  }
-}
+  },
+  mounted() {
+    this.$router.push({ path: "/mapa" });
+  },
+};
 </script>
 
 <style>
@@ -28,9 +28,9 @@ export default {
   color: #2c3e50;
 }
 
-*{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 </style>

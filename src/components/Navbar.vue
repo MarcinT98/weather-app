@@ -8,7 +8,7 @@
                 </div>
                 <ul class="flexBlock">
                     <li>
-                        <a href="#">Mapa</a>
+                        <router-link to="/mapa">Mapa</router-link>
                     </li>
                     <li>
                         <a href="#">Prognoza na dziś</a>
