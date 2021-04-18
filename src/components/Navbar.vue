@@ -14,7 +14,7 @@
                         <a href="#">Prognoza na dziś</a>
                     </li>
                     <li>
-                        <a href="#">Pogoda długoterminowa</a>
+                        <router-link to="/long">Pogoda długoterminowa</router-link>
                     </li>
                     <li>
                         <router-link to="/smog">Jakość powietrza</router-link>
