@@ -20,7 +20,7 @@
                         <router-link to="/smog">Jakość powietrza</router-link>
                     </li>
                     <li>
-                        <a href="#">Alarmy pogodowe</a>
+                        <router-link to="/alarmy">Alarmy pogodowe</router-link>
                     </li>
                 </ul>
             </div>
@@ -38,6 +38,7 @@ export default {
 <style scoped>
 .lineTop{
     background: #15202B;
+    margin-bottom: 50px;
 }
 .center{
 	margin: 0 auto;
