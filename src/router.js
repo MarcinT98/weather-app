@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Smog from './components/Smog.vue'
 import Map from './components/Map.vue'
+import Long from './components/LongTerm.vue'
 
 Vue.use(Router)
 
@@ -13,6 +14,10 @@ const routes = [
     {
         path: '/mapa',
         component: Map
+    },
+    {
+        path:'/long',
+        component:Long
     }
 ]
 
