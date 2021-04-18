@@ -2,6 +2,7 @@
   <div>
     <div class="mapContainer">
       <svg
+        v-if="loaded"
         class="map"
         id="map"
         baseprofile="tiny"
@@ -117,29 +118,41 @@
             :cy="calculateY(city)"
             :r="5"
           ></circle>
-          <text :x="calculateX(city) - 30" :y="calculateY(city) + 35">
+          <text
+            v-on:click="selectCity(city)"
+            :x="calculateX(city) - 30"
+            :y="calculateY(city) + 35"
+          >
             {{ city.name }}
           </text>
         </svg>
       </svg>
     </div>
+    <LineChart v-if="selectedCity" :selectedCity="this.selectedCity" />
   </div>
 </template>
 
 <script>
+import LineChart from "./OneDayTempChart";
+import axios from "axios";
+
 export default {
   name: "Map",
   data() {
     return {
-      cities: [
-        { name: "Kraków", N: 50.06, E: 19.95 },
-        { name: "Wrocław", N: 51.11, E: 17.03 },
-        { name: "Warszawa", N: 52.25, E: 21.02 },
-        { name: "Gdańsk", N: 54.36, E: 18.63 },
-        { name: "Aleksandrów Kujawski", N: 52.88, E: 18.7 },
-        { name: "Katowice", N: 50.25, E: 19.02 },
-      ],
+      cities: [],
+      selectedCity: "",
+      loaded: false,
     };
+  },
+  components: { LineChart },
+  mounted() {
+    axios
+      .get(`https://607c762c67e6530017574113.mockapi.io/cities`)
+      .then((response) => {
+        this.loaded = true;
+        this.cities = response.data;
+      });
   },
   methods: {
     calculateX: function (city) {
@@ -153,6 +166,9 @@ export default {
       let mapNFull = 49.0;
       let degN = 950 / Math.abs(mapNZero - mapNFull);
       return Math.round(Math.abs(city.N - mapNZero) * degN * 100) / 100;
+    },
+    selectCity: function (city) {
+      this.selectedCity = city.name;
     },
   },
 };
