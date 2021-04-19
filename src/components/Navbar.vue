@@ -11,9 +11,6 @@
                         <router-link to="/mapa">Mapa</router-link>
                     </li>
                     <li>
-                        <a href="#">Prognoza na dziś</a>
-                    </li>
-                    <li>
                         <router-link to="/long">Pogoda długoterminowa</router-link>
                     </li>
                     <li>
