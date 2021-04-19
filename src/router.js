@@ -17,12 +17,16 @@ const routes = [
         component: Map
     },
     {
-        path:'/long',
-        component:Long
+        path: '/long',
+        component: Long
     },
     {
         path: '/alarmy',
         component: Alerts
+    },
+    {
+        path: '*',
+        redirect: '/mapa'
     }
 ]
 
