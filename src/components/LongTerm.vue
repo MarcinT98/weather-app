@@ -39,7 +39,7 @@
 var showChart=new Boolean;
 
  import axios from 'axios';
- import{ApiKey1} from '../main';
+ //import{ApiKey1} from '../main';
 import CitiesJson from '../components/Cities.json';
 //import Test from '../components/long.json';
 export default{
@@ -67,9 +67,9 @@ export default{
       getData()
       {
            
-       //axios.get('https://607740cc1ed0ae0017d6ab45.mockapi.io/Test')
+       axios.get('https://607740cc1ed0ae0017d6ab45.mockapi.io/Test')
 
-        axios.get('https://my.api.mockaroo.com/test/'+this.City+'.json?key='+ApiKey1)
+        //axios.get('https://my.api.mockaroo.com/test/'+this.City+'.json?key='+ApiKey1)
         .then(response=>{this.info=response.data
         var obj1='{ "'
 response.data.forEach(element => {
@@ -103,9 +103,7 @@ this.chartData=JSON.parse(obj1)})
 
   },
 beforeMount()
-{//var obj="{ '01.04.2021' : 13, '02.04.2021' : 18, '03.04.2021' : 9, '04.04.2021' : 6, '05.04.2021' : 18, '06.04.2021' : 1, '07.04.2021' : 3, '08.04.2021' : 10, '09.04.2021' : 6, '10.04.2021' : 5, '11.04.2021' : 0, '12.04.2021' : 8, '13.04.2021' : 1, '14.04.2021' : 17, '15.04.2021' : 1, '16.04.2021' : 17, '17.04.2021' : 6, '18.04.2021' : 11, '19.04.2021' : 12, '20.04.2021' : 13, '21.04.2021' : 15, '22.04.2021' : 6, '23.04.2021' : 2, '24.04.2021' : 16, '25.04.2021' : 17, '26.04.2021' : 1, '27.04.2021' : 7, '28.04.2021' : 13, '29.04.2021' : 17, '30.04.2021' : 10 }"
-//this.chartData=obj;
-//this.getData();
+{
 this.getCities();
 this.showChart=false;
 
