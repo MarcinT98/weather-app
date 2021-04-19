@@ -21,7 +21,7 @@
         <td>{{element.PM1}} µg/m³</td>
 
        
-        </tr>sa
+        </tr>
         </tbody>
         </table> 
         <h1>PM10 µg/m³</h1>
@@ -42,7 +42,7 @@
 <script>
 
 import axios from 'axios';
-//import{ApiKey1} from '../main';
+import{ApiKey1} from '../main';
 export default{
       data() {
     return {
@@ -58,8 +58,8 @@ chartData2:{},
       getData()
       {
           
-//axios.get('https://my.api.mockaroo.com/smog1.json?key='+ApiKey1)
-axios.get('https://607c6ec567e653001757407d.mockapi.io/Cities')
+axios.get('https://my.api.mockaroo.com/smog1.json?key='+ApiKey1)
+//axios.get('https://607c6ec567e653001757407d.mockapi.io/Cities')
 .then(response=>{this.info=response.data
         var obj1='{ "'
         var obj2='{ "'
