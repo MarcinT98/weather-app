@@ -1,7 +1,9 @@
 <template>
     <div id="test">
-        <h1>Smog</h1>
-            <table class="table table-striped text-white">
+        <h1>Zanieczyszczenie powietrza</h1>
+        <br>
+        <br>
+            <table v-show="false" class="table table-striped text-white">
         <thead>
         <th>Miasto</th>
         <th> PM10 </th>
@@ -21,9 +23,14 @@
        
         </tr>sa
         </tbody>
-        </table>
+        </table> 
+        <h1>PM10 µg/m³</h1>
         <column-chart :data="chartData"></column-chart>
+        <br>
+        <h1>PM2.5 µg/m³</h1>
         <column-chart :data="chartData1"></column-chart>
+        <br>
+        <h1>PM1 µg/m³</h1>
         <column-chart :data="chartData2"></column-chart>
         
     </div>

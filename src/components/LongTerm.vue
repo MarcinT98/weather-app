@@ -1,36 +1,45 @@
 <template>
     <div id="test">
         <form>
+            Wybierz miasto<br>
             
-            <select v-model ="City">
+            <select v-model ="City" @change="getData()" id="standard-select">
+            
                 <option v-for="city in Cities" v-bind:key="city">{{city.City}}</option>
             </select>
+            
         </form>
-        <button v-on:click ="getData()">Szukaj</button> 
-            <table class="table table-striped text-white" v-show=showChart>
+        <br>
+
+        <h1>{{City}}</h1>
+        <div class="center flexBlock">
+          
+            <table v-show=showChart>
         <thead>
         <tr>
-            <th>{{City}}</th>
+            
         </tr>
-        <th>Date</th>
-        <th> Temprature </th>
-        <th> Rain </th>
-        <th> Wind </th>
+        <th>Data</th>
+        <th> Temperatura </th>
+        <th> Opady </th>
+        <th> Wiatr </th>
 
         <th></th>
         <th></th>
         </thead>
         <tbody id="show">
         <tr v-for="(element,index) in info" v-bind:key="index">
+          
         <td>{{element.Date}} </td>
-        <td>{{element.Temperature}} </td>
-        <td>{{element.Rain}}</td>
-        <td>{{element.Wind}}</td>
-
+        <td>{{element.Temperature}} °C </td>
+        <td>{{element.Rain}} mm / 12h</td>
+        <td>{{element.Wind}} km/h</td>
+      
        
         </tr>
         </tbody>
         </table>
+        </div>
         <line-chart v-show="showChart" :data="chartData"></line-chart>    
     </div>
 
@@ -39,8 +48,8 @@
 var showChart=new Boolean;
 
  import axios from 'axios';
- //import{ApiKey1} from '../main';
-import CitiesJson from '../components/Cities.json';
+ import{ApiKey1} from '../main';
+//import CitiesJson from '../components/Cities.json';
 //import Test from '../components/long.json';
 export default{
     
@@ -67,9 +76,9 @@ export default{
       getData()
       {
            
-       axios.get('https://607740cc1ed0ae0017d6ab45.mockapi.io/Test')
+       //axios.get('https://607740cc1ed0ae0017d6ab45.mockapi.io/Test')
 
-        //axios.get('https://my.api.mockaroo.com/test/'+this.City+'.json?key='+ApiKey1)
+        axios.get('https://my.api.mockaroo.com/LongTerm/'+this.City+'.json?key='+ApiKey1)
         .then(response=>{this.info=response.data
         var obj1='{ "'
 response.data.forEach(element => {
@@ -97,8 +106,8 @@ this.chartData=JSON.parse(obj1)})
       },
       getCities()
       {
-          //axios.get('https://my.api.mockaroo.com/cities.json?key='+ApiKey1).then(response=>(this.Cities=response.data))
-          this.Cities=CitiesJson
+          axios.get('https://my.api.mockaroo.com/cities.json?key='+ApiKey1).then(response=>(this.Cities=response.data))
+          //this.Cities=CitiesJson
       }
 
   },
@@ -111,3 +120,30 @@ this.showChart=false;
 
 }
 </script>
+<style scoped>
+.center{
+	margin: 0 auto;
+	max-width: 1200px;
+	padding: 0 30px;
+    margin-bottom: 50px;
+}
+.flexBlock{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+table{
+    width: 1000px;
+    margin: 0 auto;
+}
+th, td{
+    padding: 20px;
+}
+table {
+  border-collapse: collapse;
+}
+tr {
+  border-bottom: 1pt solid #15202B;
+}
+
+</style>
