@@ -8,23 +8,11 @@
                     <th>Data</th>
                     <th>Alarm</th>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Kraków</td>
-                    <td>19.04.2021</td>
-                    <td>Silne opady</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Warszawa</td>
-                    <td>19.04.2021</td>
-                    <td>Silny wiatr</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Gdańsk</td>
-                    <td>19.04.2021</td>
-                    <td>Gradobicie</td>
+                <tr v-for="alert in alerts" :key="alert">
+                    <td>{{alert.id}}</td>
+                    <td>{{alert.city}}</td>
+                    <td>{{alert.date}}</td>
+                    <td>{{alert.alert}}</td>
                 </tr>
             </table>
         </div>
@@ -32,8 +20,24 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  name: 'Alerts'
+  name: 'Alerts',
+  data(){
+      return{
+          alerts: [],
+          loaded: false,
+      };
+  },
+  mounted(){
+      axios
+        .get(`https://607d34d7184368001769d1b1.mockapi.io/alerts`)
+        .then((response) => {
+            this.loaded = true;
+            this.alerts = response.data;
+        });
+    }
 }
 </script>
 
@@ -42,6 +46,7 @@ export default {
 	margin: 0 auto;
 	max-width: 1200px;
 	padding: 0 30px;
+    margin-bottom: 50px;
 }
 .flexBlock{
 	display: flex;
